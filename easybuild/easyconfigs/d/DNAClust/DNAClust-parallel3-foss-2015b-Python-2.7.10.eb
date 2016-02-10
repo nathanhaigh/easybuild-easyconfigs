@@ -1,0 +1,35 @@
+# Note:
+# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
+# It was auto-generated based on a template easyconfig, so it should be used with care.
+easyblock = 'MakeCp'
+
+name = 'DNAClust'
+version = 'parallel3'
+versionsuffix = '-Python-2.7.10'
+
+homepage = 'http://dnaclust.sourceforge.net'
+description = """DNACLUST is a tool for clustering millions of short DNA sequences."""
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
+
+source_urls = [SOURCEFORGE_SOURCE]
+sources = ['parallel_release_3/%(namelower)s_repo_release3.zip']
+
+patches = ['DNAClust-parallel3_Makefile.patch']
+
+dependencies = [
+    ('Boost', '1.60.0', versionsuffix)
+]
+
+list_of_executables = ['dnaclust', 'fastaselect', 'fastasort']
+
+# this is the real EasyBuild line to copy all the executables to "bin"
+files_to_copy = [(list_of_executables, "bin")]
+
+sanity_check_paths = {
+    'files': ["bin/%s" % x for x in list_of_executables],
+    'dirs': []
+}
+
+moduleclass = 'bio'

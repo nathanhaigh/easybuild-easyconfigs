@@ -1,0 +1,10 @@
+--- Makefile.orig	2016-02-10 15:16:33.492000217 +1030
++++ Makefile	2016-02-10 15:26:31.045309689 +1030
+@@ -1,6 +1,5 @@
+ #PROFILE_FLAGS = -pg -fprofile-arcs -ftest-coverage -g -O1
+-CXXFLAGS = -Wall -pedantic -std=c++98 -O2 -static
+-CXX = g++
++CXXFLAGS = -Wall -pedantic -std=c++98 -O2
+ 
+ all: dnaclust fastaselect fastasort
+ 
